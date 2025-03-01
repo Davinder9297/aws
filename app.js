@@ -47,7 +47,7 @@ app.use(morgan("dev")); // Logging
 
 // Sample Route
 app.get("/", (req, res) => {
-  res.json({ message: "Welcome to the Node.js API!" });
+  res.json({ message: "Welcome to the AWS Tutorials" });
 });
 
 
