@@ -3,7 +3,7 @@ name: Deploy to AWS EC2
 on:
   push:
     branches:
-      - main  # Change to your branch if needed
+      - main  # Change if using a different branch
 
 jobs:
   deploy:
@@ -22,8 +22,8 @@ jobs:
 
     - name: Deploy to EC2
       run: |
-        ssh ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
-        cd /home/ubuntu/aws  # Change this to your project directory
+        ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
+        cd /home/ubuntu/aws  # Change to your project directory
         git pull origin main
         npm install
         pm2 restart app.js  # Restart app with PM2
